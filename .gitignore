@@ -1,0 +1,6 @@
+bin/
+gen/
+.metadata/
+.settings/
+#project.properties
+todo.txt
