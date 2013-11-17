@@ -20,10 +20,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 	Context mContext;
 	NotificationManager mNM;
 	Remindable mRemindable;
-	
-	long tripId;
 	Binder mBinder = new Binder();
-//	Bundle mIntents;
 	PendingIntent mNotificationContentIntent;
 	Reminder mReminder;
 	
@@ -31,32 +28,24 @@ public class AlarmReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
 		mContext = context;
-//		if(intent.getAction().equals("intent")) {
-			
-		
 		Class className = intent.getClass();
 		Bundle bundle = intent.getExtras();
-		
-//		mNotificationContentIntent = bundle.getParcelable(Reminder.INTENT);
-//		mNotificationContentIntent = intent.getParcelableExtra(Reminder.INTENT);
 		mRemindable = bundle.getParcelable(Reminder.REMINDABLE);
 		mReminder = bundle.getParcelable(Reminder.NUDGE);
 		mNotificationContentIntent = mReminder.createNotificationContentIntent(mContext, mReminder.getBackStackIntents());
 		Log.d(TAG, mRemindable.toString());
-		Log.d(TAG, "" + tripId);
+
 		wakeUpScreen();
 		showNotification();
-//		}
+
 	}
 
 	private void wakeUpScreen() {
 		PowerManager powerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-//		if(!powerManager.isScreenOn()) {
+
 			WakeLock wakeLock = powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK |PowerManager.ACQUIRE_CAUSES_WAKEUP |PowerManager.ON_AFTER_RELEASE, "reminderWake");
 			wakeLock.acquire(10000);
-		
-			
-//		}
+
 	}
 	
 	private void showNotification() {
@@ -75,8 +64,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 		notification.defaults |= Notification.DEFAULT_SOUND;
 		
 		mNM.notify(Reminder.NOTIFICATION_ID, notification);
-		
-//		this.stopSelf();
+
 	}
 
 

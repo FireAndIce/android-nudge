@@ -22,7 +22,7 @@ import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.widget.Toast;
 
-public class AlarmService extends Service {
+class AlarmService extends Service {
 	public static String TAG = AlarmService.class.getCanonicalName();
 	
 	NotificationManager mNM;
