@@ -13,4 +13,5 @@ public interface Remindable extends Parcelable {
 	public String getNotificationTitle();
 	public String getNotificationContent();
 	public int getNotificationResourceDrawableId();
+	public List<Long> computeTriggerTimes();
 }
